@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SPTarkov.Common</name>
+    </assembly>
+    <members>
+        <member name="M:SPTarkov.Common.Extensions.ObjectExtensions.ContainsJsonProperty``1(System.Object,``0)">
+            <summary>
+                CARE WHEN USING THIS, THIS IS TO GET PROP ON A TYPE
+            </summary>
+            <param name="obj"></param>
+            <param name="key"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:SPTarkov.Common.Logger.LogFileRollMonitor">
+            <summary>
+            This class handles booting up a task for each provider, managing the amount of rolled files and deleting the oldest ones if necessary
+            </summary>
+        </member>
+        <member name="T:SPTarkov.Common.Logger.SPTLoggerWrapper">
+            <summary>
+            This class wraps <see cref="T:Microsoft.Extensions.Logging.ILogger">ILogger</see> to make sure that our logging system is compatible with Microsoft's logging system.
+            </summary>
+            <param name="category"></param>
+            <param name="dispatcher"></param>
+        </member>
+        <member name="M:SPTarkov.Common.Logger.SPTLoggerWrapper.#ctor(System.String,SPTarkov.Common.Logger.SPTLoggerDispatcher)">
+            <summary>
+            This class wraps <see cref="T:Microsoft.Extensions.Logging.ILogger">ILogger</see> to make sure that our logging system is compatible with Microsoft's logging system.
+            </summary>
+            <param name="category"></param>
+            <param name="dispatcher"></param>
+        </member>
+        <member name="T:SPTarkov.Common.Models.Logging.FileLogger">
+            <summary>
+            An empty stub class so that we can more easily define file logs
+            </summary>
+        </member>
+        <member name="F:SPTarkov.Common.Models.Logging.SptLoggerFilterExtensions._cachedRegexes">
+            <summary>
+            The cached regex's, keyed to the filter's name with the value being the regex in question
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SPTarkov.Server.Web</name>
+    </assembly>
+    <members>
+        <member name="T:SPTarkov.Server.Web.IModBlazorMetadata">
+             <summary>
+             This interface is used as a metadata marker to identify mod assemblies that integrate with Blazor or MVC.
+             </summary>
+             <remarks>
+             Implementing this interface signals to the SPT Server to:
+             <list type="bullet">
+               <item>
+                 <description>Link the mod's <c>wwwroot</c> directory, enabling serving of static web assets (CSS, JS, etc.).</description>
+               </item>
+               <item>
+                 <description>Register the mod's Blazor components and pages for routing within the SPT Server.</description>
+               </item>
+               <item>
+                 <description>Register the mod's MVC controllers for use as APIs where necessary.</description>
+               </item>
+             </list>
+            
+             </remarks>
+        </member>
+        <member name="P:SPTarkov.Server.Web.IModBlazorMetadata.WWWRootUrl">
+            <summary>
+            This property will allow you to set a custom directory for wwwroot, if this is left null it will use the assembly's name
+            </summary>
+        </member>
+        <member name="P:SPTarkov.Server.Web.IModBlazorMetadata.HomePage">
+            <summary>
+                Allows setting a home page url that shows up in the SIC mod links section
+             <br/><br/>
+            Example: /my-mod
+            </summary>
+        </member>
+        <member name="P:SPTarkov.Server.Web.IModBlazorMetadata.HomePageDescription">
+            <summary>
+                Sets the card description on the SPT landing page
+            </summary>
+        </member>
+        <member name="T:SPTarkov.Server.Web.Services.IPasswordHasher">
+            <summary>
+            Hashes and verifies web-panel account passwords.
+            </summary>
+        </member>
+        <member name="M:SPTarkov.Server.Web.Services.IPasswordHasher.Hash(System.String)">
+            <summary>
+            Hashes a plaintext password into a hash suitable for storage.
+            </summary>
+        </member>
+        <member name="M:SPTarkov.Server.Web.Services.IPasswordHasher.Verify(System.String,System.String,System.Boolean@)">
+            <summary>
+            Verifies a plaintext password against a previously stored encoded hash. Returns false for a malformed or
+            corrupted hash.
+            </summary>
+            <param name="password">The plaintext password supplied at login.</param>
+            <param name="encodedHash">The stored encoded hash to verify against.</param>
+            <param name="needsRehash">
+            True when the password was correct but the stored hash was produced with cost parameters that differ from the
+            current ones, so the caller should re-hash and persist it. Always false on a failed verification.
+            </param>
+        </member>
+        <member name="M:SPTarkov.Server.Web.Services.IPasswordHasher.IsEncodedHash(System.String)">
+            <summary>
+            Returns true when the supplied value is already one of this hasher's encoded hashes, rather than a plaintext
+            secret. Used to detect pre-hashing credentials that still need migrating.
+            </summary>
+        </member>
+        <member name="P:SPTarkov.Server.Web.Services.IPasswordHasher.DummyHash">
+            <summary>
+            A throwaway hash whose verification cost matches a real one. Verify a failed login against this so response
+            timing is the same whether the supplied username exists.
+            </summary>
+        </member>
+    </members>
+</doc>
